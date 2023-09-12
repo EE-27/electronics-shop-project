@@ -21,6 +21,12 @@ class Item:
         self.quantity = quantity
         Item.all.append(self)
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        return f"{self.__name}"
+
     def calculate_total_price(self) -> float:
         """
         Рассчитывает общую стоимость конкретного товара в магазине.
@@ -51,7 +57,6 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls, csv_file):
         cls.all = []
-        items = []
 
         with open(csv_file) as file:
             dictread = csv.DictReader(file)
@@ -60,8 +65,8 @@ class Item:
                 price = int(line["price"])
                 quantity = int(line["quantity"])
                 item = cls(name, price, quantity)
-                items.append(item)
-        return items
+
+
 
         # with open(csv_file, "r") as file:
         #     next(file)  # Skip the header line... Thank you, ChatGPT
