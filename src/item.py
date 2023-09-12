@@ -51,7 +51,6 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls, csv_file):
         cls.all = []
-        items = []
 
         with open(csv_file) as file:
             dictread = csv.DictReader(file)
@@ -60,8 +59,8 @@ class Item:
                 price = int(line["price"])
                 quantity = int(line["quantity"])
                 item = cls(name, price, quantity)
-                items.append(item)
-        return items
+
+
 
         # with open(csv_file, "r") as file:
         #     next(file)  # Skip the header line... Thank you, ChatGPT
