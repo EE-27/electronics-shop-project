@@ -1,0 +1,5 @@
+src bylo nutno v pycharmu/settings:
+project/
+    Project Structure/
+        Mark src as Source - jinak module not found, i když ty ostatní main.py fungovaly
+            NO IDEA WHY
