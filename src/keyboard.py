@@ -1,19 +1,26 @@
-class Keyboard():
+from item import Item
 
-    def __init__(self, name, price, quantity):
-        self.name = name
-        self.price = price
-        self.quantity = quantity
-        self._language = "EN"
 
-    def __str__(self):
-        return self.name
+class MixinLog:
+    def __init__(self):
+        pass
 
     def change_lang(self):
         if self._language == "EN":
             self._language = "RU"
         elif self._language == "RU":
             self._language = "EN"
+
+
+class Keyboard(Item, MixinLog):
+
+    def __init__(self, name, price, quantity):
+        super().__init__(name, price, quantity)
+        self._language = "EN"
+
+    def __str__(self):
+        return self.name
+
 
     @property
     def language(self):
