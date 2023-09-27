@@ -14,7 +14,9 @@ class Phone(Item):
         return f"{self.__class__.__name__}(\'{self.name}\', {self.price}, {self.quantity}, {self.__number_of_sim})"
 
     def __add__(self, other):
-        return self.quantity + other.quantity
+        if isinstance(other, Phone):
+            return int(self.quantity) + int(other.quantity)
+        return "Only Phone objects and their children can be stacked."
 
     @property
     def number_of_sim(self):
